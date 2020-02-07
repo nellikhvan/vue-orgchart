@@ -10,7 +10,7 @@
       @mousedown="pan && panStartHandler($event)"
       @mousemove="pan && panning && panHandler($event)"
     >
-      <organization-chart-node :datasource="datasource" :handle-click="handleClick">
+      <organization-chart-node :datasource="datasource" :direction="r2l" :handle-click="handleClick">
         <template v-for="slot in Object.keys($scopedSlots)" :slot="slot" slot-scope="scope">
           <slot :name="slot" v-bind="scope"/>
         </template>
@@ -47,6 +47,10 @@ export default {
       type: Number,
       required: false,
       default: 7
+    },
+    className: {
+      type: String,
+      required: false
     }
   },
   data () {
